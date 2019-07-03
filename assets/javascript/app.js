@@ -1,32 +1,52 @@
-let searchTerms = ['matrix', 'shrek', 'deadpool'];
+let searchTerms = ['justice league', 'shrek', 'deadpool'];
 
 
 
 
 
 //appends a button for each object in search terms array
-for (let i = 0; i < searchTerms.length; i++) {
+function populateButtons(){
+    $('.buttons').empty();
+    for (let i = 0; i < searchTerms.length; i++) {
     let buttons = $('<button>');
     buttons.text(searchTerms[i]);
     buttons.attr('data-name', searchTerms[i]);
     $('.buttons').append(buttons);
+    }
 }
+//call function to get starting buttons on screen
+populateButtons();
 
-$('button').on('click', function(){
+//adds search input to the page as a button
+$('#inputButton').on('click', function(e){
+   
+    e.preventDefault();
+
+    let searchInput = $('#searchInput').val().trim();
+    if(searchInput != ''){
+        searchTerms.push(searchInput);
+        $('#searchInput').val('');
+    }
+    populateButtons();
+
+})
+
+
+$('.buttons').on('click', 'button', function(){
     //get the data attribute for the button clicked
     let input = $(this).attr('data-name');
     //api key for giphy t3X8WSh5UuP13eOL33cqlZmOKV3kFp0W
     let queryURL = `https://api.giphy.com/v1/gifs/search?q=${input}&api_key=t3X8WSh5UuP13eOL33cqlZmOKV3kFp0W&limit=10`;
-    
+
+    //ajax call to the input URL to get database information and display it
     $.ajax({
         url: queryURL,
         method: 'GET'
     }).then(function(response){
-            console.log(response);
             let results = response.data;
         for (let i = 0; i < results.length; i++) {
                 let gifDiv = $('<Div>');
-                console.log(results[i].images.fixed_height.url);
+
                 let rating = results[i].rating;
                 //sets up a element with the rating to be appended later
                 let p = $('<p>');
