@@ -1,0 +1,20 @@
+body{
+    background-color: dimgray;
+}
+.buttons{
+    padding: 5px;
+}
+button{
+    background-color: darkslategray;
+    color: white;
+    margin-left: 10px;
+}
+.gif{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+.container{
+    display: flex;
+    
+}

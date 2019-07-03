@@ -46,21 +46,28 @@ $('.buttons').on('click', 'button', function(){
             let results = response.data;
         for (let i = 0; i < results.length; i++) {
                 let gifDiv = $('<Div>');
-
+            console.log(response);
                 let rating = results[i].rating;
                 //sets up a element with the rating to be appended later
                 let p = $('<p>');
                 p.text(`Rating: ${rating}`);
                 //sets up a element with the gif image to be appended later
                 let gif = $('<img>');
-                gif.attr('src', results[i].images.fixed_height.url);
+                gif.attr('src', results[i].images.fixed_height_still.url).attr('id', 'gifActive').attr('data-inactive', results[i].images.fixed_height.url);
             //append both new elements
                 gifDiv.append(p).append(gif);
                 $('.gif').prepend(gifDiv);
         }
     })
+})
+//on click function to swap still and active gifs
+$('.gif').on('click', '#gifActive', function(){
+    let src = $(this).attr('src');
+    
+    $(this).attr('src', $(this).attr('data-inactive'));
 
+    $(this).attr('data-inactive', src);
+    
 
 
 })
-
