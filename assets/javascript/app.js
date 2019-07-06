@@ -1,4 +1,4 @@
-let searchTerms = ['justice league', 'deadpool', 'shrek', 'avengers'];
+let searchTerms = ['matrix', 'deadpool', 'shrek', 'avengers'];
 
 
 
@@ -44,6 +44,9 @@ $('.buttons').on('click', 'button', function(){
         method: 'GET'
     }).then(function(response){
             let results = response.data;
+            if($('.gif').length = 10){
+                $('.gif').html('');
+            }
         for (let i = 0; i < 10; i++) {
                 let gifDiv = $('<Div>');
                 let rating = results[i].rating;
@@ -56,7 +59,7 @@ $('.buttons').on('click', 'button', function(){
                 let favorite = $('<a>');
                 favorite.text('Like');
                 favorite.attr('href', '#').attr('data-inactive', results[i].images.fixed_height.url).attr('data-number', results[i].images.fixed_height_still.url).attr('data-id', i);
-            //append both new elements
+            //append new elements
                 gifDiv.append(p).append(gif).append(favorite);
                 $('.gif').prepend(gifDiv);
         }

@@ -90,3 +90,6 @@ a.active:after{
 .favorites{
     width: 30vw;
 }
+label{
+    color: white;
+}
