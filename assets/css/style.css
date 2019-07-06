@@ -8,13 +8,85 @@ button{
     background-color: darkslategray;
     color: white;
     margin-left: 10px;
+    border-radius: 75px;
+    font-size: 16px;
 }
 .gif{
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 60%;
 }
 .container{
     display: flex;
     
+}
+p{
+    margin-top: 5px;
+    color: white;
+}
+/* animation of a like button */
+a{
+    display: block;
+    position: relative;
+    transform: translate(-50% -50%);
+    width: 50px;
+    height: 25px;
+    background: lightgray;
+    border-radius: 75px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+a.active{
+    background: transparent;
+    color: white;
+}
+a:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: darkred;
+    width: 58%;
+    height: 100%;
+    transition: 0.5s;
+    z-index:-1;
+    transform: translateX(-70px) rotate(-325deg);
+    opacity: 0;
+}
+a.active:before{
+    transform: translateX(5px) rotate(35deg);
+    border-bottom-left-radius: 75px;
+    border-top-left-radius: 75px;
+    opacity: 1;
+}
+a:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: darkred;
+    width: 58%;
+    height: 100%;
+    transition: 0.5s;
+    z-index:-1;
+    transform: translateX(70px) rotate(325deg);
+    opacity: 0;
+}
+a.active:after{
+    transform: translateX(5px) rotate(-35deg);
+    border-bottom-right-radius: 75px;
+    border-top-right-radius: 75px;
+    opacity: 1;
+}
+#text{
+    color: white;
+    width: 100%;
+}
+.favorites{
+    width: 30vw;
 }
